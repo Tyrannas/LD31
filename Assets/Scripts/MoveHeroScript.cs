@@ -30,14 +30,19 @@ public class MoveHeroScript : MonoBehaviour {
 		}		
 	}
 	
+	
+	public bool getFacingRight()
+	{
+		return facingRight;
+	}
+	
 	//gestion de l'orientation gauche droite du perso
-	void Flip_x(){
+	public void Flip_x(){
 		facingRight = !facingRight;
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
-	
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{

@@ -4,6 +4,7 @@ using System.Collections;
 public class levelHeroScript : MonoBehaviour {
 	
 	heroAttackScript attackScript;
+	MoveHeroScript moveScript;
 	
 	int levelHero;
 	
@@ -20,18 +21,24 @@ public class levelHeroScript : MonoBehaviour {
 	void Start()
 	{
 		attackScript = GameObject.Find("Hero").GetComponent<heroAttackScript>();
+		moveScript = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
 		SetLevelHero(1);
 	}
-	
 	public void SetLevelHero(int levelvoulu)
 	{
+		Sprite sprtTemp;
+		int coefFacingRight=-1;
+		if(moveScript.getFacingRight())
+		{
+			coefFacingRight=1;
+		}
 		if(levelvoulu == 1)
 		{
 			levelHero=1;
 			attackScript.setPv(level1pv);
 			attackScript.setPuissance(level1puissance);
-			this.transform.localScale = new Vector2(1,1);
-			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprite1;
+			this.transform.localScale = new Vector2(1*coefFacingRight,1);
+			sprtTemp = sprite1;		
 			
 		}
 		else if(levelvoulu == 2)
@@ -39,19 +46,21 @@ public class levelHeroScript : MonoBehaviour {
 			levelHero=2;
 			attackScript.setPv(level2pv);
 			attackScript.setPuissance(level2puissance);
-			this.transform.localScale = new Vector2(2,1.5f);
-			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprite2;
+			this.transform.localScale = new Vector2(2*coefFacingRight,1.5f);
+			sprtTemp = sprite2;
 		}
-		else if(levelvoulu == 3)
+		else
 		{
 			levelHero=3;
 			attackScript.setPv(level3pv);
 			attackScript.setPuissance(level3puissance);
-			this.transform.localScale = new Vector2(4,3);
-			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprite3;
+			this.transform.localScale = new Vector2(4*coefFacingRight,3);
+			sprtTemp = sprite3;
 		}
+
+			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprtTemp;
+
+			
 	}
-
-
 
 }
