@@ -3,6 +3,8 @@ guid: 849834970d5b2524a8bd53acec2f7c25
 TextureImporter:
   fileIDToRecycleName:
     21300000: robottest
+    21300002: monstretest
+    21300004: swordtest
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -51,6 +53,26 @@ TextureImporter:
         y: 64
         width: 14
         height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: monstretest
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 21
+        width: 14
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swordtest
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 83
+        width: 9
+        height: 2
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
