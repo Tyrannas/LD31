@@ -24,6 +24,9 @@ public class MoveHeroScript : MonoBehaviour {
 	const int level1puissance=1;
 	const int level2puissance=2;
 	const int level3puissance=3;
+	public Sprite sprite1;
+	public Sprite sprite2;
+	public Sprite sprite3;
 	
 	
 	public Transform weapon;
@@ -122,6 +125,7 @@ public class MoveHeroScript : MonoBehaviour {
 			pv=level2pv;
 			puissance=level2puissance;
 			this.transform.localScale = new Vector2(2,1.5f);
+			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprite2; 
 		}
 		else if(level==3)
 		{	
@@ -129,6 +133,7 @@ public class MoveHeroScript : MonoBehaviour {
 			pv=level3pv;
 			puissance=level3puissance;	
 			this.transform.localScale = new Vector2(4,3);
+			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprite3; 
 			
 		}
 
