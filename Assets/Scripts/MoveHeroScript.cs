@@ -33,7 +33,7 @@ public class MoveHeroScript : MonoBehaviour {
 	void Start () {
 		level = 1;
 		pv = level1pv;
-		puissance = 3;
+		puissance = level1puissance;
 		animhero = GetComponent<Animator>();
 	}
 	
@@ -111,14 +111,26 @@ public class MoveHeroScript : MonoBehaviour {
 			pv=level3pv;
 		else
 			pv = pvtemp;
-			
-		Debug.Log (pv);
 	}
 	
 	void levelUp(int futurlevel)
 	{
 		level= futurlevel;
-		Debug.Log ("levelup");
+		if(level==2)
+		{
+			Debug.Log ("level2");
+			pv=level2pv;
+			puissance=level2puissance;
+			this.transform.localScale = new Vector2(2,1.5f);
+		}
+		else if(level==3)
+		{	
+			Debug.Log ("level3");
+			pv=level3pv;
+			puissance=level3puissance;	
+			this.transform.localScale = new Vector2(4,3);
+			
+		}
 
 	}
 	
@@ -142,16 +154,18 @@ public class MoveHeroScript : MonoBehaviour {
 			{
 				grounded = true;
 			}
-			
-			if(attacking && c.otherCollider.name == "heroSword" && collision.collider.name == "Monstre")
-			{
-				int pvtoadd =collision.collider.GetComponent<monstreScript>().monsterIsHit(puissance);
-				addPv(pvtoadd);
-				/* Monster is hit renvoie le type du monstre et on ajoute autant de pv au joueuer
-				que le monstre a un niveau élevé*/	
-			}
 		}
 		
+	}
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		Debug.Log (coll.transform.name);
+		if(coll.transform.name=="Monstre")
+		{
+				
+				int pvtoadd =coll.GetComponent<monstreScript>().monsterIsHit(puissance);
+				addPv(pvtoadd);
+		}	
 	}
 	void OnCollisionStay2D(Collision2D collision)
 	{
