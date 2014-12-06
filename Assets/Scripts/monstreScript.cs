@@ -51,7 +51,7 @@ public class monstreScript : MonoBehaviour {
 			jump ();	
 			grounded = false;
 		}
-		if(stuck)
+		if(stuck && grounded)
 			jump ();
 
 
