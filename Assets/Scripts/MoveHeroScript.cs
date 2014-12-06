@@ -13,9 +13,17 @@ public class MoveHeroScript : MonoBehaviour {
 	bool attacking = false;
 	bool facingRight = true;
 	
-	int level = 1;
-	int pv = 10;
-	int puissance =1;
+	int level;
+	int pv;
+	int puissance;
+	
+	//caractéristiques dépendant des niveaux
+	const int level1pv=10;
+	const int level2pv=15;
+	const int level3pv=20;
+	const int level1puissance=1;
+	const int level2puissance=2;
+	const int level3puissance=3;
 	
 	
 	public Transform weapon;
@@ -23,7 +31,9 @@ public class MoveHeroScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		
+		level = 1;
+		pv = level1pv;
+		puissance = 3;
 		animhero = GetComponent<Animator>();
 	}
 	
@@ -38,7 +48,6 @@ public class MoveHeroScript : MonoBehaviour {
 		if (inputX > 0 && !facingRight)
 		{
 			Flip_x();
-			Debug.Log ("unity se chie dessus");
 		}
 		else if (inputX < 0 && facingRight)
 			Flip_x();
@@ -60,6 +69,8 @@ public class MoveHeroScript : MonoBehaviour {
 	{	
 		proceedAttack();
 	}
+	
+	
 	
 	//gestion de l'orientation gauche droite du perso
 	void Flip_x(){
@@ -89,6 +100,27 @@ public class MoveHeroScript : MonoBehaviour {
 		//weapon.collider2D.enabled=false;
 	}
 
+	public void addPv(int nb)
+	{
+		int pvtemp = pv+nb;
+		if(level==1 && pvtemp>=level2pv)
+			levelUp(2);
+		else if(level==2 && pvtemp>=level3pv)
+			levelUp(3);
+		else if(level==3 && pvtemp>=level3pv)
+			pv=level3pv;
+		else
+			pv = pvtemp;
+			
+		Debug.Log (pv);
+	}
+	
+	void levelUp(int futurlevel)
+	{
+		level= futurlevel;
+		Debug.Log ("levelup");
+
+	}
 	
 	public int getPuissance()
 	{
@@ -109,6 +141,14 @@ public class MoveHeroScript : MonoBehaviour {
 			if(c.otherCollider.name == "heroGroundCheck" )
 			{
 				grounded = true;
+			}
+			
+			if(attacking && c.otherCollider.name == "heroSword" && collision.collider.name == "Monstre")
+			{
+				int pvtoadd =collision.collider.GetComponent<monstreScript>().monsterIsHit(puissance);
+				addPv(pvtoadd);
+				/* Monster is hit renvoie le type du monstre et on ajoute autant de pv au joueuer
+				que le monstre a un niveau élevé*/	
 			}
 		}
 		
