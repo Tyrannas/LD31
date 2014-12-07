@@ -8,12 +8,14 @@ public class MoveHeroScript : MonoBehaviour {
 	
 	bool facingRight = true;
 	bool grounded;
-	
+	heroAttackScript is_hit;
+	bool pushed;
 	heroUIScript heroUI;
 	
 	void Start()
 	{
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
+		is_hit = GameObject.Find ("Hero").GetComponent<heroAttackScript>();
 	}
 	
 	public void setJumpForce(int nb)
@@ -24,6 +26,9 @@ public class MoveHeroScript : MonoBehaviour {
 		
 		//deplacement horizontal du personnage
 		float inputX;
+		pushed = is_hit.IsPushed();
+
+		if(!pushed){
 		inputX = Input.GetAxisRaw ("Horizontal");
 		rigidbody2D.velocity = new Vector2(inputX*moveSpeed,rigidbody2D.velocity.y);
 		
@@ -38,7 +43,9 @@ public class MoveHeroScript : MonoBehaviour {
 		if(Input.GetButtonDown("Jump") && grounded)
 		{
 			rigidbody2D.AddForce(new Vector2(0,jumpForce),ForceMode2D.Impulse);
-		}		
+		}
+		}
+
 	}
 	
 	
@@ -46,7 +53,9 @@ public class MoveHeroScript : MonoBehaviour {
 	{
 		return facingRight;
 	}
-	
+	public bool getGrounded(){
+		return grounded;
+	}
 	//gestion de l'orientation gauche droite du perso
 	public void Flip_x(){
 		facingRight = !facingRight;

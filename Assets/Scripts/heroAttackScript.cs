@@ -8,23 +8,21 @@ public class heroAttackScript : MonoBehaviour {
 	int puissance;
 	public float attackLength;
 	float timeLeftAttacking;
-	
+	bool push;
 	levelHeroScript levelScript;
+	MoveHeroScript heroMove;
 	heroUIScript heroUI;
-	
 	public Transform weaponHero;
 	public Animator animhero;
-	bool direction_monstre;
-
-	
 	bool attacking = false;
-	
+	bool grounded;
+
 	void Start()
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
-		direction_monstre = true;
-
+		heroMove = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
+		push = false;
 	}
 	
 	public void setPv(int nb)
@@ -44,13 +42,12 @@ public class heroAttackScript : MonoBehaviour {
 	void Update () {
 		//attaque du personnage
 		if(Input.GetKeyDown(KeyCode.Z) && !attacking)
-		{
 			attack();
-		}
-		if(Input.GetKeyDown(KeyCode.E))
-		{
-			weaponHero.collider2D.enabled=false;
-		}	
+
+		grounded = heroMove.getGrounded();
+		if(grounded)
+			push = false;
+
 	}
 	void FixedUpdate()
 	{
@@ -78,25 +75,22 @@ public class heroAttackScript : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		if(coll.transform.tag=="Monstre")
+		if(coll.transform.tag == "Monstre")
 		{
 			
-			int pvtoadd =coll.GetComponent<monstreScript>().monsterIsHit(puissance);
+			int pvtoadd = coll.GetComponent<monstreScript>().monsterIsHit(puissance);
 			levelScript.addPv(pvtoadd);
 		}	
 	}
-	public void HeroIsHit(int puissanceMonstre)
+	public bool IsPushed()
+	{
+		return push;
+	}
+	public void HeroIsHit(int puissanceMonstre, GameObject monstre)
 	{	
-		//push = true;
-		
-		if(direction_monstre){
-			rigidbody2D.AddForce(new Vector2(puissanceMonstre*5 - puissance/3, puissanceMonstre*5 - puissance/3),ForceMode2D.Impulse);
-		}
-		else{
-			rigidbody2D.AddForce(new Vector2(-puissanceMonstre*5 - puissance/3, puissanceMonstre*5 - puissance/3),ForceMode2D.Impulse);
-
-		}
-		
+		push = true;
+		int coeff = monstre.GetComponent<monstreScript>().getFacingRight();
+		rigidbody2D.AddForce(new Vector2(coeff * (puissanceMonstre*3 - puissance/3), puissanceMonstre*3 - puissance/3),ForceMode2D.Impulse);
 		levelScript.subPv(puissanceMonstre);
 	}
 

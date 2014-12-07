@@ -14,11 +14,13 @@ public class monstreAttackScript : MonoBehaviour {
 	Vector3 position_hero;
 	public Vector3 test;
 	bool attacking = false;
+	int mtype;
 	
 	void Start()
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
-		puissance = 1;
+		puissance = GetComponent<monstreScript>().getPower();
+		mtype = GetComponent<monstreScript>().getMType();
 		ok_baby = true;
 	}
 
@@ -29,9 +31,18 @@ public class monstreAttackScript : MonoBehaviour {
 		if((Mathf.Abs (position_hero.x - transform.position.x) < 3f) && ((Mathf.Abs(position_hero.y - transform.position.y) < 2f))){
 		if(ok_baby){
 				attack();
-				delta_time = 200;
-				ok_baby = false;
-
+				switch(mtype){
+				case 1:
+					delta_time = 70;
+					break;
+				case 2:
+					delta_time = 130;
+					break;
+				case 3:
+					delta_time = 200;
+					break;
+				}
+					ok_baby = false;
 			}
 		}
 		if(!ok_baby)
@@ -72,8 +83,7 @@ public class monstreAttackScript : MonoBehaviour {
 		Debug.Log (coll.transform.name);
 		if(coll.transform.tag=="Hero")
 		{
-			
-			coll.GetComponent<heroAttackScript>().HeroIsHit(puissance);
+			coll.GetComponent<heroAttackScript>().HeroIsHit(puissance, this.gameObject);
 		}	
 	}
 	

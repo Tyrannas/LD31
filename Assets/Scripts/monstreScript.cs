@@ -32,7 +32,7 @@ public class monstreScript : MonoBehaviour {
 		case 1:
 			puissance = 1;
 			pv = 2;
-			vitesse = 6;
+			vitesse = 5;
 			jumpForceMOB = 5;
 			break;
 		case 2:
@@ -72,9 +72,14 @@ public class monstreScript : MonoBehaviour {
 		switch(typeMonstre){
 		case 1:
 			if((position_hero.x - transform.position.x) < 0){
-			rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);}
+			rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
+				if(facingRight > 0)
+						Flip ();
+				}
 			else{
 			rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
+			if(facingRight < 0)
+						Flip ();
 			}
 			if((Mathf.Abs(position_hero.x - this.transform.position.x) < 0.3) && (Mathf.Abs (position_hero.y - this.transform.position.y) < 10) && grounded){
 			jump ();	
@@ -84,7 +89,7 @@ public class monstreScript : MonoBehaviour {
 			jump ();
 			break;
 		case 2:
-			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0)){
+			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < -1)){
 				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
 				if(facingRight > 0)
 						Flip ();
@@ -104,9 +109,14 @@ public class monstreScript : MonoBehaviour {
 
 		case 3:
 			if(((position_hero.x - transform.position.x) > -6) && ((position_hero.x - transform.position.x) < 0)){
-				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);}
+				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
+				if(facingRight > 0)
+						Flip ();
+				}
 			else if(((position_hero.x - transform.position.x) < 6) && ((position_hero.x - transform.position.x) > 0)){
 				rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
+				if(facingRight < 0)
+						Flip ();
 
 			}
 			break;
@@ -154,10 +164,14 @@ public class monstreScript : MonoBehaviour {
 		}
 		return 0;
 	}
-
+	public int getMType(){
+		return typeMonstre;
+	}
 	public int getFacingRight()
 	{
 		return facingRight;
 	}
-
+	public int getPower(){
+		return puissance;
+	}
 }
