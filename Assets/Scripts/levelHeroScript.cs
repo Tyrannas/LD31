@@ -10,8 +10,8 @@ public class levelHeroScript : MonoBehaviour {
 	int levelHero;
 	
 	const int level1pv=10;
-	const int level2pv=12;
-	const int level3pv=14;
+	const int level2pv=30;
+	const int level3pv=60;
 	const int level1puissance=1;
 	const int level2puissance=2;
 	const int level3puissance=3;
