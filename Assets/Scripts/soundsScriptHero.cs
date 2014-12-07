@@ -38,7 +38,7 @@ public class soundsScriptHero : MonoBehaviour {
 		if(timeSinceStep>=walkTime)
 		{
 			timeSinceStep=0;
-			audiosc.PlayOneShot(footstepsSound);
+			audiosc.PlayOneShot(footstepsSound,0.3f);
 		}
 	}
 	public void playLevelDown()
