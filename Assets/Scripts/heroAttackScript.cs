@@ -91,12 +91,10 @@ public class heroAttackScript : MonoBehaviour {
 		
 		if(direction_monstre){
 			rigidbody2D.AddForce(new Vector2(puissanceMonstre*5 - puissance/3, puissanceMonstre*5 - puissance/3),ForceMode2D.Impulse);
-			Debug.Log("MD");
 		}
 		else{
 			rigidbody2D.AddForce(new Vector2(-puissanceMonstre*5 - puissance/3, puissanceMonstre*5 - puissance/3),ForceMode2D.Impulse);
-			Debug.Log("MG");
-			
+
 		}
 		
 		levelScript.subPv(puissanceMonstre);

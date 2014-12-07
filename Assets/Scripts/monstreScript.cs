@@ -84,10 +84,16 @@ public class monstreScript : MonoBehaviour {
 			jump ();
 			break;
 		case 2:
-			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0))
+			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0)){
 				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
-			else if(((position_hero.x - transform.position.x) < 10) && ((position_hero.x - transform.position.x) > 0))
+				if(facingRight > 0)
+						Flip ();
+				}
+			else if(((position_hero.x - transform.position.x) < 10) && ((position_hero.x - transform.position.x) > 0)){
 				rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
+				if(facingRight < 0)
+						Flip ();
+			}
 			else if(stuck)
 						Flip();
 			else if(vide)

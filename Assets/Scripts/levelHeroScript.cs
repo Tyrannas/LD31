@@ -51,7 +51,7 @@ public class levelHeroScript : MonoBehaviour {
 	public void subPv(int nb)
 	{
 		int pv = attackScript.getPv();
-		int pvtemp = pv +nb;
+		int pvtemp = pv - nb;
 		if(pvtemp<=0)
 			Debug.Log ("dead");
 		else if(levelHero == 2 && pvtemp<=level1pv)

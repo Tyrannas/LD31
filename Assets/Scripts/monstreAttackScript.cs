@@ -2,7 +2,9 @@
 using System.Collections;
 
 public class monstreAttackScript : MonoBehaviour {
-	
+
+	bool ok_baby;
+	public int delta_time;
 	int puissance;
 	public float attackLength;
 	float timeLeftAttacking;
@@ -11,23 +13,34 @@ public class monstreAttackScript : MonoBehaviour {
 	public Animator animmonster;
 	Vector3 position_hero;
 	public Vector3 test;
-
 	bool attacking = false;
 	
 	void Start()
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
-		position_hero = GameObject.Find("Hero").GetComponent<Transform>().position;
-
+		puissance = 1;
+		ok_baby = true;
 	}
 
 	void Update () {
 		//attaque du personnage
-		test = position_hero - transform.position;
+		position_hero = GameObject.Find("Hero").GetComponent<Transform>().position;
+		test = position_hero-transform.position;
+		if((Mathf.Abs (position_hero.x - transform.position.x) < 3f) && ((Mathf.Abs(position_hero.y - transform.position.y) < 2f))){
+		if(ok_baby){
+				attack();
+				delta_time = 200;
+				ok_baby = false;
 
-		if((Mathf.Abs (position_hero.x - transform.position.x) < 3f) && ((Mathf.Abs(position_hero.y - transform.position.y) < 2f)))
-			attack();
+			}
+		}
+		if(!ok_baby)
+			delta_time--;
+		if(delta_time < 0)
+			ok_baby = true;
+
 	}
+
 	void FixedUpdate()
 	{
 		proceedAttack();
@@ -35,6 +48,7 @@ public class monstreAttackScript : MonoBehaviour {
 	
 	void attack()
 	{
+
 		Debug.Log("Attack");
 		attacking = true;
 		weapon.collider2D.enabled=true;
