@@ -33,7 +33,7 @@ public class MoveHeroScript : MonoBehaviour {
 		if(!pushed){
 		inputX = Input.GetAxisRaw ("Horizontal");
 		rigidbody2D.velocity = new Vector2(inputX*moveSpeed,rigidbody2D.velocity.y);
-		if(Mathf.Abs(inputX)!=0)
+		if(Mathf.Abs(inputX)!=0 && grounded)
 			soundHero.playFootsteps();
 		
 		if (inputX > 0 && !facingRight)
