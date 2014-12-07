@@ -9,9 +9,12 @@ public class heroAttackScript : MonoBehaviour {
 	public float attackLength;
 	float timeLeftAttacking;
 	bool push;
+	
 	levelHeroScript levelScript;
 	MoveHeroScript heroMove;
 	heroUIScript heroUI;
+	soundsScriptHero soundHero;
+	
 	public Transform weaponHero;
 	public Animator animhero;
 	public GameObject bloodParticle;
@@ -21,6 +24,7 @@ public class heroAttackScript : MonoBehaviour {
 	void Start()
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
+		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
 		heroMove = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
 		push = false;
@@ -58,6 +62,7 @@ public class heroAttackScript : MonoBehaviour {
 	void attack()
 	{
 		attacking = true;
+		soundHero.playAttack();
 		weaponHero.collider2D.enabled=true;
 		timeLeftAttacking = attackLength;
 		animhero.Play ("attackHero");	
@@ -89,6 +94,7 @@ public class heroAttackScript : MonoBehaviour {
 	public void HeroIsHit(int puissanceMonstre, GameObject monstre)
 	{	
 		push = true;
+		soundHero.playAttacked();
 		spillBlood ();
 		int coeff = monstre.GetComponent<monstreScript>().getFacingRight();
 		rigidbody2D.AddForce(new Vector2(coeff * (puissanceMonstre*3 - puissance/3), puissanceMonstre*3 - puissance/3),ForceMode2D.Impulse);

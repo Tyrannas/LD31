@@ -9,6 +9,7 @@ public class monstreAttackScript : MonoBehaviour {
 	public float attackLength;
 	float timeLeftAttacking;
 	levelHeroScript levelScript;
+	soundsScriptHero soundHero;
 	public Transform weapon;
 	public Animator animmonster;
 	Vector3 position_hero;
@@ -20,6 +21,7 @@ public class monstreAttackScript : MonoBehaviour {
 	{
 		GetComponent<monstreScript>().Initialise();
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
+		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
 		Debug.Log (GetComponent<monstreScript>().getPower());
 		puissance = GetComponent<monstreScript>().getPower();
 		mtype = GetComponent<monstreScript>().getMType();

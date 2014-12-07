@@ -4,16 +4,49 @@ using System.Collections;
 public class soundsScriptHero : MonoBehaviour {
 
 	public AudioClip attackSound;
-	public AudioSource audiosc;
-	// Use this for initialization
+	public AudioClip attackedSound;
+	public AudioClip levelUpSound;
+	public AudioClip footstepsSound;
+	public AudioClip levelDownSound;
+	public AudioClip lifeUpSound;
+	
+	float timeSinceStep=0;
+	public float walkTime;
+	
 	void Update()
 	{
-		if(Input.GetKeyDown(KeyCode.E))
-			playAttack();
+		timeSinceStep += Time.deltaTime;
 	}
+	
+	public AudioSource audiosc;
+	// Use this for initialization
 	
 	public void playAttack()
 	{
-		audio.PlayOneShot(attackSound);
+		audiosc.PlayOneShot(attackSound);
+	}
+	public void playAttacked()
+	{
+		audiosc.PlayOneShot(attackedSound);
+	}
+	public void playLevelUp()
+	{
+		audiosc.PlayOneShot(levelUpSound);
+	}
+	public void playFootsteps()
+	{
+		if(timeSinceStep>=walkTime)
+		{
+			timeSinceStep=0;
+			audiosc.PlayOneShot(footstepsSound);
+		}
+	}
+	public void playLevelDown()
+	{
+		audiosc.PlayOneShot(levelDownSound);
+	}
+	public void playLifeUp()
+	{
+		audiosc.PlayOneShot(lifeUpSound);
 	}
 }

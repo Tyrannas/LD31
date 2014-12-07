@@ -5,6 +5,7 @@ public class levelHeroScript : MonoBehaviour {
 	
 	heroAttackScript attackScript;
 	MoveHeroScript moveScript;
+	soundsScriptHero soundHero;
 	
 	int levelHero;
 	
@@ -27,6 +28,7 @@ public class levelHeroScript : MonoBehaviour {
 	void Start()
 	{
 		attackScript = GameObject.Find("Hero").GetComponent<heroAttackScript>();
+		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
 		moveScript = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
 		SetLevelHero(1);
 	}
@@ -40,12 +42,14 @@ public class levelHeroScript : MonoBehaviour {
 		if(levelHero==1 && pvtemp>=level2pv)
 		{
 			levelParticleLaunch();
+			soundHero.playLevelUp();
 			SetLevelHero(2);
 		}
 		else if(levelHero==2 && pvtemp>=level3pv)
 		{
 			levelParticleLaunch();
 			SetLevelHero (3);
+			soundHero.playLevelUp();
 		}
 		else if(levelHero==3 && pvtemp>=level3pv)
 		{
@@ -66,9 +70,15 @@ public class levelHeroScript : MonoBehaviour {
 		if(pvtemp<=0)
 			Debug.Log ("dead");
 		else if(levelHero == 2 && pvtemp<=level1pv)
+		{
 			SetLevelHero(1);
+			soundHero.playLevelDown();
+		}
 		else if(levelHero == 3 && pvtemp<=level2pv)
+		{
 			SetLevelHero(2);
+			soundHero.playLevelDown();
+		}
 		else
 			attackScript.setPv(pvtemp);
 			
