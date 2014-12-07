@@ -10,6 +10,7 @@ public class heroAttackScript : MonoBehaviour {
 	float timeLeftAttacking;
 	
 	levelHeroScript levelScript;
+	heroUIScript heroUI;
 	
 	public Transform weaponHero;
 	public Animator animhero;
@@ -20,11 +21,13 @@ public class heroAttackScript : MonoBehaviour {
 	void Start()
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
+		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
 	}
 	
 	public void setPv(int nb)
 	{
 		pv=nb;
+		heroUI.setAffichagePV(pv);
 	}
 	public int getPv()
 	{
@@ -72,7 +75,6 @@ public class heroAttackScript : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		Debug.Log (coll.transform.name);
 		if(coll.transform.tag=="Monstre")
 		{
 			
@@ -80,6 +82,8 @@ public class heroAttackScript : MonoBehaviour {
 			levelScript.addPv(pvtoadd);
 		}	
 	}
+	
+
 
 	
 	

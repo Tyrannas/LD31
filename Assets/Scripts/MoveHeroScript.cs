@@ -9,6 +9,13 @@ public class MoveHeroScript : MonoBehaviour {
 	bool facingRight = true;
 	bool grounded;
 	
+	heroUIScript heroUI;
+	
+	void Start()
+	{
+		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
+	}
+	
 	public void setJumpForce(int nb)
 	{
 		jumpForce=nb;
@@ -43,6 +50,7 @@ public class MoveHeroScript : MonoBehaviour {
 	//gestion de l'orientation gauche droite du perso
 	public void Flip_x(){
 		facingRight = !facingRight;
+		heroUI.preventFlip(facingRight);
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
