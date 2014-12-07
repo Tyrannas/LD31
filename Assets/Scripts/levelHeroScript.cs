@@ -52,7 +52,14 @@ public class levelHeroScript : MonoBehaviour {
 	{
 		int pv = attackScript.getPv();
 		int pvtemp = pv +nb;
-		attackScript.setPv(pvtemp);
+		if(pvtemp<=0)
+			Debug.Log ("dead");
+		else if(levelHero == 2 && pvtemp<=level1pv)
+			SetLevelHero(1);
+		else if(levelHero == 3 && pvtemp<=level2pv)
+			SetLevelHero(2);
+		else
+			attackScript.setPv(pvtemp);
 	}
 	
 	public void SetLevelHero(int levelvoulu)
