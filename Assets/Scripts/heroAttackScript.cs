@@ -8,14 +8,25 @@ public class heroAttackScript : MonoBehaviour {
 	public float attackLength;
 	float timeLeftAttacking;
 	
+	levelHeroScript levelScript;
+	
 	public Transform weaponHero;
 	public Animator animhero;
 	
 	bool attacking = false;
 	
+	void Start()
+	{
+		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
+	}
+	
 	public void setPv(int nb)
 	{
 		pv=nb;
+	}
+	public int getPv()
+	{
+		return pv;
 	}
 	public void setPuissance(int nb)
 	{
@@ -64,7 +75,7 @@ public class heroAttackScript : MonoBehaviour {
 		{
 			
 			int pvtoadd =coll.GetComponent<monstreScript>().monsterIsHit(puissance);
-			//addPv(pvtoadd);
+			levelScript.addPv(pvtoadd);
 		}	
 	}
 

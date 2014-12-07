@@ -9,8 +9,8 @@ public class levelHeroScript : MonoBehaviour {
 	int levelHero;
 	
 	const int level1pv=10;
-	const int level2pv=15;
-	const int level3pv=20;
+	const int level2pv=12;
+	const int level3pv=14;
 	const int level1puissance=1;
 	const int level2puissance=2;
 	const int level3puissance=3;
@@ -24,6 +24,22 @@ public class levelHeroScript : MonoBehaviour {
 		moveScript = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
 		SetLevelHero(1);
 	}
+	
+	public void addPv(int nb)
+	{
+		int pv = attackScript.getPv();
+		int pvtemp = pv+nb;
+		if(levelHero==1 && pvtemp>=level2pv)
+			SetLevelHero(2);
+		else if(levelHero==2 && pvtemp>=level3pv)
+			SetLevelHero (3);
+		else if(levelHero==3 && pvtemp>=level3pv)
+			pv=level3pv;
+		else
+			pv = pvtemp;
+	
+	}
+	
 	public void SetLevelHero(int levelvoulu)
 	{
 		Sprite sprtTemp;
@@ -58,9 +74,7 @@ public class levelHeroScript : MonoBehaviour {
 			sprtTemp = sprite3;
 		}
 
-			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprtTemp;
-
-			
+			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprtTemp;	
 	}
 
 }
