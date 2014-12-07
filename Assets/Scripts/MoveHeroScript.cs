@@ -50,11 +50,10 @@ public class MoveHeroScript : MonoBehaviour {
 	//gestion de l'orientation gauche droite du perso
 	public void Flip_x(){
 		facingRight = !facingRight;
-		heroUI.detachCanvas();
+		heroUI.preventFlip();
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-		heroUI.attachCanvas();
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision)

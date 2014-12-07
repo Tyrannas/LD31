@@ -13,13 +13,9 @@ public class heroUIScript : MonoBehaviour {
 		affichage.GetComponent<Text>().text = "Pv = "+pv;
 	}
 	
-	public void detachCanvas()
+	public void preventFlip()
 	{
-		//affCanvas.SetParent(null,true);
-	}
-	public void attachCanvas()
-	{
-		//affCanvas.SetParent(transform,true);
+		affCanvas.localScale= new Vector3(affCanvas.localScale.x*-1,affCanvas.localScale.y,affCanvas.localScale.z);
 	}
 	// Update is called once per frame
 	void Update () {
