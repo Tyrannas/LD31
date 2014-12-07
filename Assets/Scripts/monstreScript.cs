@@ -17,7 +17,7 @@ public class monstreScript : MonoBehaviour {
 	public Transform groundCheck;
 	public Transform wallCheck;
 	public Transform voidCheck;
-
+	public GameObject bloodParticle;
 	int facingRight;
 	float groundRadius = 0.2f;
 	float wallRadius = 1f;
@@ -145,17 +145,13 @@ public class monstreScript : MonoBehaviour {
 	public int monsterIsHit(int puissancehero)
 	{	
 		push = true;
-	
+		spillBlood();
 		if(direction_epee.getFacingRight()){
 			rigidbody2D.AddForce(new Vector2(puissancehero*5 - puissance/3, puissancehero*5 - puissance/3),ForceMode2D.Impulse);
-			Debug.Log("Droit");
 		}
 		else{
 			rigidbody2D.AddForce(new Vector2(-puissancehero*5 - puissance/3, puissancehero*5 - puissance/3),ForceMode2D.Impulse);
-			Debug.Log("Gauche");
-
 		}
-
 		pv-=puissancehero;
 		if(pv<=0)
 		{
@@ -163,6 +159,11 @@ public class monstreScript : MonoBehaviour {
 			return typeMonstre;
 		}
 		return 0;
+	}
+	void spillBlood()
+	{
+		GameObject blood = (GameObject) Instantiate(bloodParticle,this.transform.position, Quaternion.identity);
+		Destroy(blood,2);
 	}
 	public int getMType(){
 		return typeMonstre;

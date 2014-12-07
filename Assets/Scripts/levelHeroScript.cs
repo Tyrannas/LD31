@@ -21,6 +21,9 @@ public class levelHeroScript : MonoBehaviour {
 	public Sprite sprite2;
 	public Sprite sprite3;
 	
+	public GameObject levelParticle;
+	public GameObject pvParticle;
+	
 	void Start()
 	{
 		attackScript = GameObject.Find("Hero").GetComponent<heroAttackScript>();
@@ -30,12 +33,20 @@ public class levelHeroScript : MonoBehaviour {
 	
 	public void addPv(int nb)
 	{
+		if(nb!=0)
+			pvParticleLaunch();
 		int pv = attackScript.getPv();
 		int pvtemp = pv+nb;
 		if(levelHero==1 && pvtemp>=level2pv)
+		{
+			levelParticleLaunch();
 			SetLevelHero(2);
+		}
 		else if(levelHero==2 && pvtemp>=level3pv)
+		{
+			levelParticleLaunch();
 			SetLevelHero (3);
+		}
 		else if(levelHero==3 && pvtemp>=level3pv)
 		{
 			pv=level3pv;
@@ -102,5 +113,19 @@ public class levelHeroScript : MonoBehaviour {
 
 			GameObject.Find("heroSprite").GetComponent<SpriteRenderer>().sprite = sprtTemp;	
 	}
+	void pvParticleLaunch()
+	{
+		GameObject pvpart = (GameObject) Instantiate(pvParticle,this.transform.position, Quaternion.identity);
+		pvpart.transform.SetParent(transform);
+		pvpart.transform.Rotate(Vector3.right,-90);
+		Destroy(pvpart,2);
+	}
+	void levelParticleLaunch()
+	{
+		GameObject lvlpart = (GameObject) Instantiate(levelParticle,this.transform.position, Quaternion.identity);
+		lvlpart.transform.SetParent(transform);
+		Destroy(lvlpart,2);
+	}
+	
 
 }

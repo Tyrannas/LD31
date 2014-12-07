@@ -14,6 +14,7 @@ public class heroAttackScript : MonoBehaviour {
 	heroUIScript heroUI;
 	public Transform weaponHero;
 	public Animator animhero;
+	public GameObject bloodParticle;
 	bool attacking = false;
 	bool grounded;
 
@@ -88,9 +89,17 @@ public class heroAttackScript : MonoBehaviour {
 	public void HeroIsHit(int puissanceMonstre, GameObject monstre)
 	{	
 		push = true;
+		spillBlood ();
 		int coeff = monstre.GetComponent<monstreScript>().getFacingRight();
 		rigidbody2D.AddForce(new Vector2(coeff * (puissanceMonstre*3 - puissance/3), puissanceMonstre*3 - puissance/3),ForceMode2D.Impulse);
 		levelScript.subPv(puissanceMonstre);
+	}
+	
+	void spillBlood()
+	{
+		GameObject blood = (GameObject) Instantiate(bloodParticle,this.transform.position, Quaternion.identity);
+		blood.transform.SetParent(transform);
+		Destroy(blood,2);
 	}
 
 	
