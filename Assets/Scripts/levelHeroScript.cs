@@ -36,7 +36,10 @@ public class levelHeroScript : MonoBehaviour {
 	public void addPv(int nb)
 	{
 		if(nb!=0)
+		{
 			pvParticleLaunch();
+			soundHero.playLifeUp();
+		}
 		int pv = attackScript.getPv();
 		int pvtemp = pv+nb;
 		if(levelHero==1 && pvtemp>=level2pv)
