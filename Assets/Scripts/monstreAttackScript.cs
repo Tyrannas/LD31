@@ -77,6 +77,7 @@ public class monstreAttackScript : MonoBehaviour {
 			weapon.collider2D.enabled=false;
 		}
 	}
+
 	
 	void OnTriggerEnter2D(Collider2D coll)
 	{
