@@ -4,7 +4,7 @@ using System.Collections;
 
 public class heroAttackScript : MonoBehaviour {
 	
-	int pv;
+	public int pv;
 	int puissance;
 	public float attackLength;
 	float timeLeftAttacking;

@@ -37,10 +37,22 @@ public class levelHeroScript : MonoBehaviour {
 		else if(levelHero==2 && pvtemp>=level3pv)
 			SetLevelHero (3);
 		else if(levelHero==3 && pvtemp>=level3pv)
+		{
 			pv=level3pv;
+			attackScript.setPv(pv);
+		}
 		else
+		{
 			pv = pvtemp;
-	
+			attackScript.setPv(pv);
+		}
+		
+	}
+	public void subPv(int nb)
+	{
+		int pv = attackScript.getPv();
+		int pvtemp = pv +nb;
+		attackScript.setPv(pvtemp);
 	}
 	
 	public void SetLevelHero(int levelvoulu)
