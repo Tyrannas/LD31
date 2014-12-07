@@ -148,4 +148,10 @@ public class monstreScript : MonoBehaviour {
 		}
 		return 0;
 	}
+
+	public int getFacingRight()
+	{
+		return facingRight;
+	}
+
 }

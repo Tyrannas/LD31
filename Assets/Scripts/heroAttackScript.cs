@@ -14,7 +14,8 @@ public class heroAttackScript : MonoBehaviour {
 	
 	public Transform weaponHero;
 	public Animator animhero;
-	
+	bool direction_monstre;
+
 	
 	bool attacking = false;
 	
@@ -22,6 +23,8 @@ public class heroAttackScript : MonoBehaviour {
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
+		direction_monstre = true;
+
 	}
 	
 	public void setPv(int nb)
@@ -82,9 +85,22 @@ public class heroAttackScript : MonoBehaviour {
 			levelScript.addPv(pvtoadd);
 		}	
 	}
-	
+	public void HeroIsHit(int puissanceMonstre)
+	{	
+		//push = true;
+		
+		if(direction_monstre){
+			rigidbody2D.AddForce(new Vector2(puissanceMonstre*5 - puissance/3, puissanceMonstre*5 - puissance/3),ForceMode2D.Impulse);
+			Debug.Log("MD");
+		}
+		else{
+			rigidbody2D.AddForce(new Vector2(-puissanceMonstre*5 - puissance/3, puissanceMonstre*5 - puissance/3),ForceMode2D.Impulse);
+			Debug.Log("MG");
+			
+		}
+		
+		levelScript.subPv(puissanceMonstre);
+	}
 
-
-	
 	
 }
