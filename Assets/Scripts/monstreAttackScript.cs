@@ -5,7 +5,7 @@ public class monstreAttackScript : MonoBehaviour {
 
 	bool ok_baby;
 	public int delta_time;
-	int puissance;
+	public int puissance;
 	public float attackLength;
 	float timeLeftAttacking;
 	levelHeroScript levelScript;
@@ -18,7 +18,9 @@ public class monstreAttackScript : MonoBehaviour {
 	
 	void Start()
 	{
+		GetComponent<monstreScript>().Initialise();
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
+		Debug.Log (GetComponent<monstreScript>().getPower());
 		puissance = GetComponent<monstreScript>().getPower();
 		mtype = GetComponent<monstreScript>().getMType();
 		ok_baby = true;
@@ -59,8 +61,6 @@ public class monstreAttackScript : MonoBehaviour {
 	
 	void attack()
 	{
-
-		Debug.Log("Attack");
 		attacking = true;
 		weapon.collider2D.enabled=true;
 		timeLeftAttacking = attackLength;
@@ -81,7 +81,6 @@ public class monstreAttackScript : MonoBehaviour {
 	
 	void OnTriggerEnter2D(Collider2D coll)
 	{
-		Debug.Log (coll.transform.name);
 		if(coll.transform.tag=="Hero")
 		{
 			coll.GetComponent<heroAttackScript>().HeroIsHit(puissance, this.gameObject);

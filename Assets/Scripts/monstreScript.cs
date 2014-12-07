@@ -5,7 +5,7 @@ public class monstreScript : MonoBehaviour {
 	
 	public int typeMonstre;
 
-	int puissance;
+	public int puissance;
 	bool push;
 	public int pv;
 	public bool grounded;
@@ -27,7 +27,7 @@ public class monstreScript : MonoBehaviour {
 	Vector3 position_hero;
 
 	// Use this for initialization
-	void Start () {
+	public void Initialise () {
 		switch(typeMonstre){
 		case 1:
 			puissance = 1;
@@ -171,7 +171,7 @@ public class monstreScript : MonoBehaviour {
 	{
 		return facingRight;
 	}
-	public int getPower(){
+	public int getPower(){		
 		return puissance;
 	}
 }

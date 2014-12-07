@@ -10,15 +10,12 @@ public class heroUIScript : MonoBehaviour {
 	
 	public void setAffichagePV(int pv)
 	{
-		affichage.GetComponent<Text>().text = "Pv = "+pv;
+		affichage.GetComponent<RectTransform>().sizeDelta = new Vector2(pv,affichage.GetComponent<RectTransform>().sizeDelta.y);
 	}
 	
 	public void preventFlip()
 	{
 		affCanvas.localScale= new Vector3(affCanvas.localScale.x*-1,affCanvas.localScale.y,affCanvas.localScale.z);
 	}
-	// Update is called once per frame
-	void Update () {
-	
-	}
+
 }

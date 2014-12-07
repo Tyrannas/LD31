@@ -60,6 +60,7 @@ public class levelHeroScript : MonoBehaviour {
 			SetLevelHero(2);
 		else
 			attackScript.setPv(pvtemp);
+			
 	}
 	
 	public void SetLevelHero(int levelvoulu)

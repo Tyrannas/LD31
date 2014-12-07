@@ -77,7 +77,6 @@ public class heroAttackScript : MonoBehaviour {
 	{
 		if(coll.transform.tag == "Monstre")
 		{
-			
 			int pvtoadd = coll.GetComponent<monstreScript>().monsterIsHit(puissance);
 			levelScript.addPv(pvtoadd);
 		}	
