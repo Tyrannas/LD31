@@ -43,9 +43,7 @@ public class heroAttackScript : MonoBehaviour {
 		attacking = true;
 		weaponHero.collider2D.enabled=true;
 		timeLeftAttacking = attackLength;
-		animhero.Play ("attackHero");
-		
-		
+		animhero.Play ("attackHero");	
 	}
 	
 	void proceedAttack()
@@ -57,6 +55,17 @@ public class heroAttackScript : MonoBehaviour {
 			attacking=false;
 			weaponHero.collider2D.enabled=false;
 		}
+	}
+	
+	void OnTriggerEnter2D(Collider2D coll)
+	{
+		Debug.Log (coll.transform.name);
+		if(coll.transform.name=="Monstre")
+		{
+			
+			int pvtoadd =coll.GetComponent<monstreScript>().monsterIsHit(puissance);
+			//addPv(pvtoadd);
+		}	
 	}
 
 	
