@@ -60,7 +60,7 @@ public class heroAttackScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll)
 	{
 		Debug.Log (coll.transform.name);
-		if(coll.transform.name=="Monstre")
+		if(coll.transform.tag=="Monstre")
 		{
 			
 			int pvtoadd =coll.GetComponent<monstreScript>().monsterIsHit(puissance);
