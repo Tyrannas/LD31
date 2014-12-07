@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class heroAttackScript : MonoBehaviour {
 	
 	int pv;
@@ -12,6 +13,7 @@ public class heroAttackScript : MonoBehaviour {
 	
 	public Transform weaponHero;
 	public Animator animhero;
+	
 	
 	bool attacking = false;
 	

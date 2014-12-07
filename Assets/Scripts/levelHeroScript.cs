@@ -14,6 +14,9 @@ public class levelHeroScript : MonoBehaviour {
 	const int level1puissance=1;
 	const int level2puissance=2;
 	const int level3puissance=3;
+	public int level1JumpForce=19;
+	public int level2JumpForce=22;
+	public int level3JumpForce=26;
 	public Sprite sprite1;
 	public Sprite sprite2;
 	public Sprite sprite3;
@@ -53,6 +56,7 @@ public class levelHeroScript : MonoBehaviour {
 			levelHero=1;
 			attackScript.setPv(level1pv);
 			attackScript.setPuissance(level1puissance);
+			moveScript.setJumpForce(level1JumpForce);
 			this.transform.localScale = new Vector2(1*coefFacingRight,1);
 			sprtTemp = sprite1;		
 			
@@ -62,6 +66,7 @@ public class levelHeroScript : MonoBehaviour {
 			levelHero=2;
 			attackScript.setPv(level2pv);
 			attackScript.setPuissance(level2puissance);
+			moveScript.setJumpForce(level2JumpForce);
 			this.transform.localScale = new Vector2(2*coefFacingRight,1.5f);
 			sprtTemp = sprite2;
 		}
@@ -70,6 +75,7 @@ public class levelHeroScript : MonoBehaviour {
 			levelHero=3;
 			attackScript.setPv(level3pv);
 			attackScript.setPuissance(level3puissance);
+			moveScript.setJumpForce(level3JumpForce);
 			this.transform.localScale = new Vector2(4*coefFacingRight,3);
 			sprtTemp = sprite3;
 		}

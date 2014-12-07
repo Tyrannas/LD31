@@ -9,6 +9,10 @@ public class MoveHeroScript : MonoBehaviour {
 	bool facingRight = true;
 	bool grounded;
 	
+	public void setJumpForce(int nb)
+	{
+		jumpForce=nb;
+	}
 	void Update () {
 		
 		//deplacement horizontal du personnage
