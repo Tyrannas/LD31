@@ -6,9 +6,11 @@ public class monstreScript : MonoBehaviour {
 	public int typeMonstre;
 
 	int puissance;
+	bool push;
 	public int pv;
 	public bool grounded;
 	public bool stuck;
+	public float compteur;
 	bool vide;
 	public LayerMask whatIsGround;
 	public LayerMask whatIsWall;
@@ -19,7 +21,7 @@ public class monstreScript : MonoBehaviour {
 	int facingRight;
 	float groundRadius = 0.2f;
 	float wallRadius = 1f;
-
+	MoveHeroScript direction_epee;
     float vitesse;
 	int jumpForceMOB;
 	Vector3 position_hero;
@@ -47,6 +49,8 @@ public class monstreScript : MonoBehaviour {
 			break;
 		}
 		facingRight = -1;
+		compteur = -1;
+		direction_epee = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
 	}
 	
 	// Update is called once per frame
@@ -56,7 +60,15 @@ public class monstreScript : MonoBehaviour {
 		vide = (!Physics2D.OverlapCircle (voidCheck.position, groundRadius, whatIsGround)) || (Physics2D.OverlapCircle (voidCheck.position, wallRadius, whatIsWall)) ;
 
 		position_hero = GameObject.Find("Hero").GetComponent<Transform>().position;
-	
+	    
+		if(push){
+			compteur = 20;
+			push = false;
+		}
+
+		
+		if(compteur < 0){
+		compteur = -1;
 		switch(typeMonstre){
 		case 1:
 			if((position_hero.x - transform.position.x) < 0){
@@ -95,6 +107,12 @@ public class monstreScript : MonoBehaviour {
 
 		}
 	}
+	}
+
+	void FixedUpdate(){
+		if(compteur >= 0)
+			compteur--;
+	}
 
 	public void jump(){
 		rigidbody2D.AddForce(new Vector2(0,jumpForceMOB),ForceMode2D.Impulse);
@@ -110,6 +128,18 @@ public class monstreScript : MonoBehaviour {
 
 	public int monsterIsHit(int puissancehero)
 	{	
+		push = true;
+	
+		if(direction_epee.getFacingRight()){
+			rigidbody2D.AddForce(new Vector2(puissancehero*5 - puissance/3, puissancehero*5 - puissance/3),ForceMode2D.Impulse);
+			Debug.Log("Droit");
+		}
+		else{
+			rigidbody2D.AddForce(new Vector2(-puissancehero*5 - puissance/3, puissancehero*5 - puissance/3),ForceMode2D.Impulse);
+			Debug.Log("Gauche");
+
+		}
+
 		pv-=puissancehero;
 		if(pv<=0)
 		{
