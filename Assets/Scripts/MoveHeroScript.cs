@@ -46,6 +46,7 @@ public class MoveHeroScript : MonoBehaviour {
 		//saut du personnage
 		if(Input.GetButtonDown("Jump") && grounded)
 		{
+			Debug.Log ("why");
 			rigidbody2D.AddForce(new Vector2(0,jumpForce),ForceMode2D.Impulse);
 		}
 		}

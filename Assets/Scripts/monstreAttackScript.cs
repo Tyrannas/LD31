@@ -15,10 +15,12 @@ public class monstreAttackScript : MonoBehaviour {
 	Vector3 position_hero;
 	public Vector3 test;
 	bool attacking = false;
+	monstreSoundsScript soundmonstre;
 	int mtype;
 	
 	void Start()
 	{
+		soundmonstre = GetComponent<monstreSoundsScript>();
 		GetComponent<monstreScript>().Initialise();
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
 		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
@@ -64,6 +66,7 @@ public class monstreAttackScript : MonoBehaviour {
 	void attack()
 	{
 		attacking = true;
+		soundmonstre.playAttack(mtype);
 		weapon.collider2D.enabled=true;
 		timeLeftAttacking = attackLength;
 		animmonster.Play ("attackMonster");	

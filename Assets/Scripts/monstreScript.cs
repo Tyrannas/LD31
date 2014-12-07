@@ -18,6 +18,7 @@ public class monstreScript : MonoBehaviour {
 	public Transform wallCheck;
 	public Transform voidCheck;
 	public GameObject bloodParticle;
+	monstreSoundsScript soundmonstre;
 	int facingRight;
 	float groundRadius = 0.2f;
 	float wallRadius = 1f;
@@ -28,6 +29,7 @@ public class monstreScript : MonoBehaviour {
 
 	// Use this for initialization
 	public void Initialise () {
+		soundmonstre = GetComponent<monstreSoundsScript>();
 		switch(typeMonstre){
 		case 1:
 			puissance = 1;
@@ -146,6 +148,7 @@ public class monstreScript : MonoBehaviour {
 	{	
 		push = true;
 		spillBlood();
+		soundmonstre.playHit(getMType());	
 		if(direction_epee.getFacingRight()){
 			rigidbody2D.AddForce(new Vector2(puissancehero*5 - puissance/3, puissancehero*5 - puissance/3),ForceMode2D.Impulse);
 		}

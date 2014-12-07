@@ -21,7 +21,7 @@ public class heroAttackScript : MonoBehaviour {
 	bool attacking = false;
 	bool grounded;
 
-	void Start()
+	public void Initialise()
 	{
 		levelScript = GameObject.Find("Hero").GetComponent<levelHeroScript>();
 		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();

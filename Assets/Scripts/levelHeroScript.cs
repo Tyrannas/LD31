@@ -30,6 +30,7 @@ public class levelHeroScript : MonoBehaviour {
 		attackScript = GameObject.Find("Hero").GetComponent<heroAttackScript>();
 		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
 		moveScript = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
+		attackScript.Initialise();
 		SetLevelHero(1);
 	}
 	
