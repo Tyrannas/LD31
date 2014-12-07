@@ -76,7 +76,7 @@ public class monstreScript : MonoBehaviour {
 				if(facingRight > 0)
 						Flip ();
 				}
-			else{
+				else if((position_hero.x - transform.position.x) > 1){
 			rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
 			if(facingRight < 0)
 						Flip ();
@@ -94,7 +94,7 @@ public class monstreScript : MonoBehaviour {
 				if(facingRight > 0)
 						Flip ();
 				}
-			else if(((position_hero.x - transform.position.x) < 10) && ((position_hero.x - transform.position.x) > 0)){
+			else if(((position_hero.x - transform.position.x) < 10) && ((position_hero.x - transform.position.x) > 1)){
 				rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
 				if(facingRight < 0)
 						Flip ();
@@ -108,12 +108,12 @@ public class monstreScript : MonoBehaviour {
 			break;
 
 		case 3:
-			if(((position_hero.x - transform.position.x) > -6) && ((position_hero.x - transform.position.x) < 0)){
+			if(((position_hero.x - transform.position.x) > -6) && ((position_hero.x - transform.position.x) < -1)){
 				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
 				if(facingRight > 0)
 						Flip ();
 				}
-			else if(((position_hero.x - transform.position.x) < 6) && ((position_hero.x - transform.position.x) > 0)){
+			else if(((position_hero.x - transform.position.x) < 6) && ((position_hero.x - transform.position.x) > 1)){
 				rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
 				if(facingRight < 0)
 						Flip ();
