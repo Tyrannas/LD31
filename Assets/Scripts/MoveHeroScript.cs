@@ -5,19 +5,22 @@ public class MoveHeroScript : MonoBehaviour {
 	
 	public float moveSpeed;
 	public float jumpForce;
-	
+
 	bool facingRight = true;
 	bool grounded;
 	heroAttackScript is_hit;
 	soundsScriptHero soundHero;
 	bool pushed;
 	heroUIScript heroUI;
-	
+	Animator animsprite;
+
 	void Start()
 	{
 		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
 		is_hit = GameObject.Find ("Hero").GetComponent<heroAttackScript>();
+		animsprite = GameObject.Find ("heroSprite").GetComponent<Animator>();
+
 	}
 	
 	public void setJumpForce(int nb)
@@ -33,6 +36,8 @@ public class MoveHeroScript : MonoBehaviour {
 		if(!pushed){
 		inputX = Input.GetAxisRaw ("Horizontal");
 		rigidbody2D.velocity = new Vector2(inputX*moveSpeed,rigidbody2D.velocity.y);
+		animsprite.SetFloat ("speed", Mathf.Abs(rigidbody2D.velocity.x));
+
 		if(Mathf.Abs(inputX)!=0 && grounded)
 			soundHero.playFootsteps();
 		
