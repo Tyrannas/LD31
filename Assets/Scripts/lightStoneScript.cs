@@ -16,7 +16,7 @@ public class lightStoneScript : MonoBehaviour {
 		cam.transform.parent.GetComponent<lightStoneScript>().Deactivate();
 		isActive=true;
 		cam.transform.parent = this.transform;
-		cam.transform.localPosition = new Vector3(0,0,cam.transform.position.z);
+		cam.transform.localPosition = new Vector3(0,3,cam.transform.position.z);
 		GetComponentInChildren<Light>().enabled =true;
 	}
 	public void Deactivate()
