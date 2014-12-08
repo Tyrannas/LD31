@@ -72,7 +72,7 @@ public class levelHeroScript : MonoBehaviour {
 		int pv = attackScript.getPv();
 		int pvtemp = pv - nb;
 		if(pvtemp<=0)
-			Debug.Log ("dead");
+			Die ();
 		else if(levelHero == 2 && pvtemp<=level1pv)
 		{
 			SetLevelHero(1);
@@ -139,6 +139,11 @@ public class levelHeroScript : MonoBehaviour {
 		GameObject lvlpart = (GameObject) Instantiate(levelParticle,this.transform.position, Quaternion.identity);
 		lvlpart.transform.SetParent(transform);
 		Destroy(lvlpart,2);
+	}
+	
+	public void Die()
+	{
+		Application.LoadLevel(0);
 	}
 	
 

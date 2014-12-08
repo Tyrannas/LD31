@@ -10,6 +10,7 @@ public class MoveHeroScript : MonoBehaviour {
 	bool grounded;
 	heroAttackScript is_hit;
 	soundsScriptHero soundHero;
+	levelHeroScript levelhero;
 	bool pushed;
 	heroUIScript heroUI;
 	Animator animsprite;
@@ -20,6 +21,7 @@ public class MoveHeroScript : MonoBehaviour {
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
 		is_hit = GameObject.Find ("Hero").GetComponent<heroAttackScript>();
 		animsprite = GameObject.Find ("heroSprite").GetComponent<Animator>();
+		levelhero = GameObject.Find ("Hero").GetComponent<levelHeroScript>();
 
 	}
 	
@@ -79,6 +81,10 @@ public class MoveHeroScript : MonoBehaviour {
 	
 	void OnCollisionEnter2D(Collision2D collision)
 	{
+		if(collision.collider.name == "death")
+		{
+			levelhero.Die();
+		}
 		foreach (ContactPoint2D c in collision.contacts)
 		{
 			if(c.otherCollider.name == "heroGroundCheck" )
