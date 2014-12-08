@@ -19,6 +19,7 @@ public class monstreScript : MonoBehaviour {
 	public Transform voidCheck;
 	public GameObject bloodParticle;
 	monstreSoundsScript soundmonstre;
+	public float position_hm;
 	int facingRight;
 	float groundRadius = 0.2f;
 	float wallRadius = 0.9f;
@@ -63,13 +64,14 @@ public class monstreScript : MonoBehaviour {
 		vide = (!Physics2D.OverlapCircle (voidCheck.position, groundRadius, whatIsGround)) || (Physics2D.OverlapCircle (voidCheck.position, wallRadius, whatIsWall)) ;
 
 		position_hero = GameObject.Find("Hero").GetComponent<Transform>().position;
+		position_hm = position_hero.y - rigidbody2D.position.y;
 
 		if(push){
 			compteur = 20;
 			push = false;
 		}
 
-		
+
 		if(compteur < 0){
 		compteur = -1;
 		switch(typeMonstre){
@@ -92,12 +94,12 @@ public class monstreScript : MonoBehaviour {
 			 jump ();
 			break;
 		case 2:
-			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0)){
+			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0) && ((position_hm < 3f) && (position_hm > -3f))){
 				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
 				if(facingRight > 0)
 						Flip ();
 				}
-			else if(((position_hero.x - transform.position.x) < 10) && ((position_hero.x - transform.position.x) > 1)){
+			else if(((position_hero.x - transform.position.x) < 10) && ((position_hero.x - transform.position.x) > 1) && ((position_hm < 3f) && (position_hm > -3f))){
 				rigidbody2D.velocity = new Vector2(vitesse, rigidbody2D.velocity.y);
 				if(facingRight < 0)
 						Flip ();
