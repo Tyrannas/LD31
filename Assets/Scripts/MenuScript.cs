@@ -3,6 +3,9 @@ using System.Collections;
 
 public class MenuScript : MonoBehaviour {
 
+	public GameObject nuages;
+	public Vector2 endNuages;
+	public float speedNuages;
 	// Use this for initialization
 	void Start () {
 	
@@ -14,5 +17,6 @@ public class MenuScript : MonoBehaviour {
 		{
 			Application.LoadLevel(1);
 		}
+		nuages.transform.position = Vector2.MoveTowards(nuages.transform.position,endNuages,speedNuages);
 	}
 }
