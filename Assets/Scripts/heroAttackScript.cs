@@ -18,6 +18,7 @@ public class heroAttackScript : MonoBehaviour {
 	public Transform weaponHero;
 	public Animator animhero;
 	public GameObject bloodParticle;
+	Animator animsprite;
 	bool attacking = false;
 	bool grounded;
 
@@ -27,6 +28,8 @@ public class heroAttackScript : MonoBehaviour {
 		soundHero = GameObject.Find("Hero").GetComponent<soundsScriptHero>();
 		heroUI = GameObject.Find("Hero").GetComponent<heroUIScript>();
 		heroMove = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
+		animsprite = GameObject.Find ("heroSprite").GetComponent<Animator>();
+
 		push = false;
 	}
 	
@@ -52,6 +55,8 @@ public class heroAttackScript : MonoBehaviour {
 		grounded = heroMove.getGrounded();
 		if(grounded)
 			push = false;
+
+		animsprite.SetBool ("attack", attacking);
 
 	}
 	void FixedUpdate()
