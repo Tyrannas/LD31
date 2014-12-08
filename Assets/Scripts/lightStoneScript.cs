@@ -17,10 +17,12 @@ public class lightStoneScript : MonoBehaviour {
 		isActive=true;
 		cam.transform.parent = this.transform;
 		cam.transform.localPosition = new Vector3(0,0,cam.transform.position.z);
+		GetComponentInChildren<Light>().enabled =true;
 	}
 	public void Deactivate()
 	{
-		isActive=false;	
+		isActive=false;
+		GetComponentInChildren<Light>().enabled =false;	
 	}
 	
 	void OnCollisionEnter2D(Collision2D collision)
