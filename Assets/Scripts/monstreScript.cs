@@ -21,6 +21,8 @@ public class monstreScript : MonoBehaviour {
 	monstreSoundsScript soundmonstre;
 	public float position_hm;
 	int facingRight;
+	bool focus;
+	float focus_range = 25;
 	float groundRadius = 0.2f;
 	float wallRadius = 0.9f;
 	MoveHeroScript direction_epee;
@@ -34,14 +36,14 @@ public class monstreScript : MonoBehaviour {
 
 		switch(typeMonstre){
 		case 1:
-			puissance = 1;
-			pv = 2;
+			puissance = 3;
+			pv = 3;
 			vitesse = 5;
 			jumpForceMOB = 3;
 			break;
 		case 2:
-			puissance = 4;
-			pv = 4;
+			puissance = 7;
+			pv = 10;
 			vitesse = 4;
 			jumpForceMOB = 5;
 			break;
@@ -54,6 +56,8 @@ public class monstreScript : MonoBehaviour {
 		}
 		facingRight = -1;
 		compteur = -1;
+		focus = false;
+
 		direction_epee = GameObject.Find("Hero").GetComponent<MoveHeroScript>();
 	}
 	
@@ -64,7 +68,7 @@ public class monstreScript : MonoBehaviour {
 		vide = (!Physics2D.OverlapCircle (voidCheck.position, groundRadius, whatIsGround)) || (Physics2D.OverlapCircle (voidCheck.position, wallRadius, whatIsWall)) ;
 
 		position_hero = GameObject.Find("Hero").GetComponent<Transform>().position;
-		position_hm = position_hero.y - rigidbody2D.position.y;
+		position_hm = position_hero.y - transform.position.y;
 
 		if(push){
 			compteur = 20;
@@ -76,6 +80,7 @@ public class monstreScript : MonoBehaviour {
 		compteur = -1;
 		switch(typeMonstre){
 		case 1:
+			if(focus){
 			if((position_hero.x - transform.position.x) < 0){
 			rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
 				if(facingRight > 0)
@@ -92,6 +97,9 @@ public class monstreScript : MonoBehaviour {
 			}
 			if(stuck)
 			 jump ();
+				}
+				else if(Mathf.Abs(position_hero.x - transform.position.x) <= focus_range)
+					focus = true;
 			break;
 		case 2:
 			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0) && ((position_hm < 3f) && (position_hm > -3f))){
