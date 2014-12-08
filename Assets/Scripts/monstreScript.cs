@@ -30,6 +30,7 @@ public class monstreScript : MonoBehaviour {
 	// Use this for initialization
 	public void Initialise () {
 		soundmonstre = GetComponent<monstreSoundsScript>();
+
 		switch(typeMonstre){
 		case 1:
 			puissance = 1;
@@ -62,7 +63,7 @@ public class monstreScript : MonoBehaviour {
 		vide = (!Physics2D.OverlapCircle (voidCheck.position, groundRadius, whatIsGround)) || (Physics2D.OverlapCircle (voidCheck.position, wallRadius, whatIsWall)) ;
 
 		position_hero = GameObject.Find("Hero").GetComponent<Transform>().position;
-	    
+
 		if(push){
 			compteur = 20;
 			push = false;
