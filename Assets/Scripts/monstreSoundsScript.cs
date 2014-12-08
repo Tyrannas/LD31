@@ -12,16 +12,16 @@ public class monstreSoundsScript : MonoBehaviour {
 	
 	public void playAttack(int type)
 	{
-		if(type == 3)
-			audio.PlayOneShot(attack3);
-		else
+		if(type == 1)
 			audio.PlayOneShot(attack1);
+		else
+			audio.PlayOneShot(attack3);
 	}
 	public void playHit(int type)
 	{
-		if(type == 3)
-			audio.PlayOneShot(hit3);
-		else
+		if(type == 1)
 			audio.PlayOneShot(hit1);
+		else
+			audio.PlayOneShot(hit3);
 	}
 }

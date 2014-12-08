@@ -21,7 +21,7 @@ public class monstreScript : MonoBehaviour {
 	monstreSoundsScript soundmonstre;
 	int facingRight;
 	float groundRadius = 0.2f;
-	float wallRadius = 1f;
+	float wallRadius = 0.9f;
 	MoveHeroScript direction_epee;
     float vitesse;
 	int jumpForceMOB;
@@ -36,7 +36,7 @@ public class monstreScript : MonoBehaviour {
 			puissance = 1;
 			pv = 2;
 			vitesse = 5;
-			jumpForceMOB = 5;
+			jumpForceMOB = 3;
 			break;
 		case 2:
 			puissance = 4;
@@ -89,10 +89,10 @@ public class monstreScript : MonoBehaviour {
 			grounded = false;
 			}
 			if(stuck)
-			jump ();
+			 jump ();
 			break;
 		case 2:
-			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < -1)){
+			if(((position_hero.x - transform.position.x) > -10) && ((position_hero.x - transform.position.x) < 0)){
 				rigidbody2D.velocity = new Vector2(-vitesse, rigidbody2D.velocity.y);
 				if(facingRight > 0)
 						Flip ();

@@ -102,7 +102,7 @@ public class heroAttackScript : MonoBehaviour {
 		soundHero.playAttacked();
 		spillBlood ();
 		int coeff = monstre.GetComponent<monstreScript>().getFacingRight();
-		rigidbody2D.AddForce(new Vector2(coeff * (puissanceMonstre*3 - puissance/3), puissanceMonstre*3 - puissance/3),ForceMode2D.Impulse);
+		rigidbody2D.AddForce(new Vector2(coeff * (puissanceMonstre*2 - puissance/3), Mathf.Abs (puissanceMonstre - puissance/3)),ForceMode2D.Impulse);
 		levelScript.subPv(puissanceMonstre);
 	}
 	

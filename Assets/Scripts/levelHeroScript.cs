@@ -99,7 +99,7 @@ public class levelHeroScript : MonoBehaviour {
 			attackScript.setPv(level1pv);
 			attackScript.setPuissance(level1puissance);
 			moveScript.setJumpForce(level1JumpForce);
-			this.transform.localScale = new Vector2(1*coefFacingRight,0.75f);	
+			this.transform.localScale = new Vector2(1.5f*coefFacingRight,1f);	
 			
 		}
 		else if(levelvoulu == 2)
@@ -108,7 +108,7 @@ public class levelHeroScript : MonoBehaviour {
 			attackScript.setPv(level2pv);
 			attackScript.setPuissance(level2puissance);
 			moveScript.setJumpForce(level2JumpForce);
-			this.transform.localScale = new Vector2(2*coefFacingRight,1.5f);
+			this.transform.localScale = new Vector2(2.5f*coefFacingRight,1.75f);
 		}
 		else
 		{
