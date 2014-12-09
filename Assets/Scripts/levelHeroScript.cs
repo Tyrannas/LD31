@@ -137,7 +137,8 @@ public class levelHeroScript : MonoBehaviour {
 	
 	public void Die()
 	{
-			Application.LoadLevel(0);
+			GameObject.Find("DiedText").GetComponent<diedScript>().Die();
+			Destroy(this.gameObject);
 	}
 	
 

@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 77ef31e56705e8148a36b657ab19aa48
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: credits_0
+    21300002: credits_1
+    21300004: credits_2
+    21300006: credits_3
+    21300008: credits_4
+    21300010: credits_5
+    21300012: credits_6
+    21300014: credits_7
+    21300016: credits_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: credits_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1336
+        width: 914
+        height: 147
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_1
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 1203
+        width: 853
+        height: 133
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1069
+        width: 788
+        height: 132
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_3
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 953
+        width: 823
+        height: 116
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_4
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 806
+        width: 798
+        height: 144
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_5
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 674
+        width: 465
+        height: 127
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_6
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 654
+        width: 258
+        height: 150
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_7
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 491
+        width: 799
+        height: 162
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: credits_8
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 308
+        width: 566
+        height: 169
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
